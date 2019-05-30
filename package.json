@@ -1,0 +1,40 @@
+{
+  "name": "webgl-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack-build.config.js",
+  "directories": {
+    "example": "example"
+  },
+  "dependencies": {
+    "ts-loader": "^6.0.1",
+    "typescript": "^3.5.1",
+    "tslint": "^5.16.0",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liangyuqi/WEBGL-demo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/liangyuqi/WEBGL-demo/issues"
+  },
+  "homepage": "https://github.com/liangyuqi/WEBGL-demo#readme",
+  "devDependencies": {
+    "awesome-typescript-loader": "^3.1.0",
+    "html-webpack-plugin": "^3.2.0",
+    "ts-loader": "^6.0.1",
+    "tslint": "^5.16.0",
+    "typescript": "^3.5.1",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.1.14"
+  }
+}

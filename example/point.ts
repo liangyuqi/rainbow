@@ -1,13 +1,7 @@
-$(function() {
-    initWebGL();
     function initWebGL() {
-        var canvas = document.getElementById("glcanvas");
-        gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
-        // var VSHADER_SOURCE = `
-        // void main() {
-        //     gl_Position = vec4(0.0, 0.0, 0.0, 1.0);
-        //     gl_PointSize = 10.0;
-        // }`;
+        var canvas = document.getElementById("glcanvas") as HTMLCanvasElement;
+        var gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+
         //着色器编程
         var VSHADER_SOURCE = `
         attribute vec4 a_Position;
@@ -16,10 +10,7 @@ $(function() {
             gl_Position = a_Position;
             gl_PointSize = a_PointSize;
         }`;
-        // var FSHADER_SOURCE = `
-        // void main() {
-        //     gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
-        // }`;
+
         //动态颜色
         var FSHADER_SOURCE = `
         precision mediump float;
@@ -69,7 +60,8 @@ $(function() {
 
         //动态设置颜色
         var vColor = gl.getUniformLocation(program, 'vColor');
-        gl.uniform4f(vColor, 1.0, 1.0, 0.0, 1.0);
+        // rgba
+        gl.uniform4f(vColor, 1.0, 0.0, 0.0, 1.0);
         //或使用Float32Array来传参
         // var color = new Float32Array([1.0, 0.0, 0.0, 1.0]);
         // gl.uniform4fv(vColor,color);
@@ -78,4 +70,5 @@ $(function() {
         gl.clear(gl.COLOR_BUFFER_BIT);
         gl.drawArrays(gl.POINTS, 0 ,1);
     }
-})
+
+    initWebGL();
