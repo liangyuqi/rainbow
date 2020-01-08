@@ -1,6 +1,8 @@
+
 const path = require('path')
 const join = path.join
 const resolve = path.resolve
+
 const {
   camelCase
 } = require('lodash')
@@ -12,84 +14,104 @@ const {
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const env = process && process.env && process.env.NODE_ENV
 const serverPort = process.env.npm_package_config_devPort || 8081
-const dev = !(env && env === 'production')
-/**
- * Update this variable if you change your library name
- */
-const libraryName = 'webgl-demo'
-const plugins = [
-  new CheckerPlugin(),
-  new TsConfigPathsPlugin(),
-  new HtmlWebpackPlugin({
-    inject: true,
-    title: libraryName,
-    filename: 'point.html',
-    template: join(__dirname, 'example/point.html'),
-    hash: true,
-    chunks: ['common', 'index']
-  })
-]
-let entry = [
-  // 'react-hot-loader/patch',
-  `webpack-dev-server/client?http://localhost:${serverPort}`,
-  // bundle the client for webpack-dev-servers and connect to the provided endpoint
-  'webpack/hot/only-dev-server',
-  // bundle the client for hot reloading
-  // `./src/${libraryName}.ts`
-  `./example/point.ts`
-]
-// 线上环境去除console debugger
-if (dev === false) {
-  // plugins.push(
-  //   new webpack.optimize.UglifyJsPlugin({
-  //     compress: {
-  //       warnings: false,
-  //       drop_debugger: true,
-  //       drop_console: true
-  //     }
-  //   }))
 
+const libraryName = 'webgl'
 
-} else {
-  plugins.push(new webpack.HotModuleReplacementPlugin())
-}
-plugins.push(new TsConfigPathsPlugin({
-  configFile: "./example/tsconfig.json"
-}))
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+
+// const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports = {
-  mode: 'development',
+
   entry: {
-    index: entry
+    index: "./examples-webgl/index.ts"
   },
-  // Currently cheap-module-source-map is broken https://github.com/webpack/webpack/issues/4176
-  devtool: 'source-map',
+  devtool: 'none',
   output: {
     path: join(__dirname, 'dist'),
     libraryTarget: 'umd',
     library: camelCase(libraryName),
-    filename: `${libraryName}.js`
-  },
-  resolve: {
-    extensions: ['.ts', '.js']
+    filename: `${libraryName}.js`,
+    globalObject: 'this'
   },
   module: {
-    rules: [{
-        test: /\.ts$/,
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+      },
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+          appendTsSuffixTo: [/\.vue$/] // vue 单文件写法
+        }
+      },
+      {
+        test: /\-worker\.ts$/,
         use: [{
-          loader: 'ts-loader'
+          loader: 'worker-loader',
+          options: {
+            inline: true,
+            publicPath: '/src/websocket/'
+          }
         }]
       },
       {
         test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'url-loader',
+        options: {
+          name: './images/[name].[ext]',
+          // limit: 8192
+        }
       }
     ]
   },
-  plugins: plugins,
+  plugins: [
+    new TsConfigPathsPlugin({
+      configFile: "tsconfig.json"
+    }),
+    new VueLoaderPlugin(),
+    new HtmlWebpackPlugin({
+      inject: true,
+      title: libraryName,
+      // favicon: join(__dirname, 'assets/images/robot.png'),
+      filename: 'index.html',
+      template: join(__dirname, 'examples-webgl/index.html'),
+      hash: true,
+      chunks: ['index'] // 和entry相对应
+    })
+  ],
+  resolve: {
+    extensions: ['.js', '.vue', '.json', '.ts'],
+    alias: {
+      'vue$': 'vue/dist/vue',
+      "~": resolve('node_modules'),
+      '@': resolve('src'),
+      'common': resolve( 'src/common'),
+      'components': resolve('src/components')
+    },
+    plugins: [new TsConfigPathsPlugin({
+      configFile: "tsconfig.json"
+    }),]
+  },
   devServer: {
     hot: true,
-    contentBase: resolve(__dirname, 'src'),
+    contentBase: resolve(__dirname),
     port: serverPort,
-    publicPath: '/'
-  }
-}
+    publicPath: '/',
+  },
+  // node: {
+  //   fs:'empty'
+  // }
+};
+

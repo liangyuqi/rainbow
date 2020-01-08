@@ -12,7 +12,7 @@ const {
 } = require('awesome-typescript-loader')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const env = process && process.env && process.env.NODE_ENV
-const serverPort = process.env.npm_package_config_devPort || 8081
+const serverPort = process.env.npm_package_config_devPort || 8088
 const dev = !(env && env === 'production')
 /**
  * Update this variable if you change your library name
@@ -51,15 +51,16 @@ module.exports = {
   },
   module: {
     rules: [{
-      test: /\.ts$/,
-      use: [{
-        loader: 'ts-loader'
-      }]
-    },
-    {
-      test: /\.scss$/,
-      use: [ 'style-loader', 'css-loader', 'sass-loader' ]
-    }]
+        test: /\.ts$/,
+        use: [{
+          loader: 'ts-loader'
+        }]
+      },
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
+      }
+    ]
   },
   plugins: plugins
 }

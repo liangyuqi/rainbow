@@ -58,7 +58,7 @@ function initWebGL2() {
 function setPoints(data, num) {
     var vertexBuffer = gl.createBuffer();
     if (!vertexBuffer) {
-        console.log('创建缓存区失败。');
+        console.error('创建缓存区失败。');
         return -1;
     }
     gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
