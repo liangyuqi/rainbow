@@ -6,8 +6,9 @@ import { initShaders } from '../../../../../../src/initShaders'
 //顶点着色器程序
 const VSHADER_SOURCE = `
         attribute vec4 a_Position; 
+        uniform vec4 u_Translation;
         void main(){
-          gl_Position = a_Position;
+          gl_Position = a_Position + u_Translation;
         }`
 
 //片元着色器程序
@@ -16,6 +17,8 @@ const FSHADER_SOURCE = `
            gl_FragColor = vec4(1.0,0.0,0.0,1.0);
         }`
 
+         //声明xyz三个方向上平移的距离
+    const Tx = 0.3,Ty = 0.3,Tz = 0;
 
 @Component
 export default class App extends Vue {
@@ -55,6 +58,19 @@ export default class App extends Vue {
         return;
       }
 
+       //获取uniform变量的存储位置
+        // @ts-ignore
+       var u_Translation = gl.getUniformLocation(gl.program,"u_Translation");
+       if(u_Translation === null || u_Translation < 0){
+           console.log("无法获取变量的存储位置");
+           return;
+       }
+
+
+       //给uniform变量赋值
+       gl.uniform4f(u_Translation,Tx,Ty,Tz,0.0);
+
+
       //指定一个覆盖（清空）canvas的颜色
       gl.clearColor(0.0, 0.0, 0.0, 1.0);
 
@@ -69,7 +85,11 @@ export default class App extends Vue {
   }
 
   initVertexBuffers(gl) {
-    let vertices = new Float32Array([0.0, 0.5, -0.5, -0.5, 0.5, -0.5]);
+    let vertices = new Float32Array(
+      [0.0, 0.5,
+        -0.5, -0.5,
+        0.5, -0.5]
+    );
     let n = 3; //绘制点的个数
 
     //创建缓冲区对象
