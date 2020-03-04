@@ -1,5 +1,5 @@
 {
-  "name": "webgl-demo",
+  "name": "rainbow",
   "version": "1.0.0",
   "description": "",
   "main": "webpack-build.config.js",
@@ -15,21 +15,21 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:webgl": "webpack-dev-server --host 0.0.0.0 --config ./webpack-dev.config.js --port 8088",
-    "dev:map-liangyuqi": "webpack-dev-server --config ./webpack-dev.config.js --content-base ./examples --host 10.232.8.48 --port 8088",
+    "dev": "webpack-dev-server --host 0.0.0.0 --config ./webpack-dev.config.js --port 8088 --open",
+    "dev:example": "webpack-dev-server --config ./webpack-dev.config.js --content-base ./examples --host 10.232.8.48 --port 8088",
     "build": "webpack --config ./webpack-build.config.js",
     "re-install": "rm -rf node_modules/ && rm -f package-lock.json && npm cache clear --force && npm install"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/liangyuqi/WEBGL-demo.git"
+    "url": "git+https://github.com/liangyuqi/rainbow.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/liangyuqi/WEBGL-demo/issues"
+    "url": "https://github.com/liangyuqi/rainbow/issues"
   },
-  "homepage": "https://github.com/liangyuqi/WEBGL-demo#readme",
+  "homepage": "https://github.com/liangyuqi/rainbow#readme",
   "devDependencies": {
     "awesome-typescript-loader": "^3.1.0",
     "css-loader": "^1.0.1",

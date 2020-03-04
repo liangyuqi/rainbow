@@ -1,30 +1,26 @@
+const path = require('path');
+const join = path.join;
+const resolve = path.resolve;
 
-const path = require('path')
-const join = path.join
-const resolve = path.resolve
-
-const {
-  camelCase
-} = require('lodash')
-const webpack = require('webpack')
+const {camelCase} = require('lodash');
+const webpack = require('webpack');
 const {
   TsConfigPathsPlugin,
   CheckerPlugin
-} = require('awesome-typescript-loader')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const env = process && process.env && process.env.NODE_ENV
-const serverPort = process.env.npm_package_config_devPort || 8081
+} = require('awesome-typescript-loader');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const env = process && process.env && process.env.NODE_ENV;
+const serverPort = process.env.npm_package_config_devPort || 8081;
 
-const libraryName = 'webgl'
+const libraryName = 'webgl';
 
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 // const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-
   entry: {
-    index: "./examples-webgl/index.ts"
+    index: './examples-webgl/index.ts'
   },
   devtool: 'none',
   output: {
@@ -38,7 +34,7 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
+        loader: 'vue-loader'
       },
       {
         test: /\.tsx?$/,
@@ -50,13 +46,15 @@ module.exports = {
       },
       {
         test: /\-worker\.ts$/,
-        use: [{
-          loader: 'worker-loader',
-          options: {
-            inline: true,
-            publicPath: '/src/websocket/'
+        use: [
+          {
+            loader: 'worker-loader',
+            options: {
+              inline: true,
+              publicPath: '/src/websocket/'
+            }
           }
-        }]
+        ]
       },
       {
         test: /\.scss$/,
@@ -70,7 +68,7 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'url-loader',
         options: {
-          name: './images/[name].[ext]',
+          name: './images/[name].[ext]'
           // limit: 8192
         }
       }
@@ -78,13 +76,13 @@ module.exports = {
   },
   plugins: [
     new TsConfigPathsPlugin({
-      configFile: "tsconfig.json"
+      configFile: 'tsconfig.json'
     }),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       inject: true,
       title: libraryName,
-      // favicon: join(__dirname, 'assets/images/robot.png'),
+      favicon: join(__dirname, 'assets/images/logo.png'),
       filename: 'index.html',
       template: join(__dirname, 'examples-webgl/index.html'),
       hash: true,
@@ -94,24 +92,25 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.json', '.ts'],
     alias: {
-      'vue$': 'vue/dist/vue',
-      "~": resolve('node_modules'),
+      vue$: 'vue/dist/vue',
+      '~': resolve('node_modules'),
       '@': resolve('src'),
-      'common': resolve( 'src/common'),
-      'components': resolve('src/components')
+      common: resolve('src/common'),
+      components: resolve('src/components')
     },
-    plugins: [new TsConfigPathsPlugin({
-      configFile: "tsconfig.json"
-    }),]
+    plugins: [
+      new TsConfigPathsPlugin({
+        configFile: 'tsconfig.json'
+      })
+    ]
   },
   devServer: {
     hot: true,
     contentBase: resolve(__dirname),
     port: serverPort,
-    publicPath: '/',
-  },
+    publicPath: '/'
+  }
   // node: {
   //   fs:'empty'
   // }
 };
-

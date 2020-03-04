@@ -1,45 +1,46 @@
 import Vue from 'vue';
-import VueRouter from 'vue-router'
+import VueRouter from 'vue-router';
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
-const Triangles = () => import('./components/triangles/triangles.vue')
+// @ts-ignore
+const Triangles = () => import('./components/triangles/triangles.vue');
+// @ts-ignore
+const Point = () => import('./components/point/point.vue');
 
-const Point = () => import('./components/point/point.vue')
+// @ts-ignore
+const Mesh = () => import('./components/mesh/mesh.vue');
 
 // const Triangles = resolve => require('./components/triangles/triangles.vue')
 
-const Main = { template: '<div>main</div>' }
+const Main = {template: '<div>main</div>'};
+
+export const routes = [
+  {
+    path: '/',
+    exact: true,
+    meta: {desc: 'main'},
+    component: Main,
+    redirect: '/mesh'
+  },
+  {
+    path: '/mesh',
+    meta: {desc: '矩形'},
+    component: Mesh
+  },
+  {
+    path: '/point',
+    meta: {desc: '点'},
+    component: Point
+  },
+  {
+    path: '/triangles',
+    meta: {desc: '三角形'},
+    component: Triangles
+  }
+];
 
 export default new VueRouter({
-    routes: [
-        {
-            path: '/',
-            meta:{desc:'main'},
-            component: Main,
-
-        },
-        {
-            path: '/point',
-            meta:{desc:'point'},
-            component: Point,
-
-        },
-        {
-            path: '/triangles',
-            meta:{desc:'triangles'},
-            component: Triangles,
-            // redirect:'/us',
-            // children: [
-            //     {
-            //         name: 'us',
-            //         path: '/us',
-            //         meta:{desc:'关于我们'},
-            //         component: Us
-            //     }
-            // ]
-        },
-        // {path: '/setting/address', component: Address,meta:{desc:'地址设置'}},
-    ]
-}
-)
+  routes,
+  linkActiveClass: 'link-active'
+});

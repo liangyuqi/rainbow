@@ -21,7 +21,7 @@ body,
   width: 300px;
   float: left;
   padding: 20px;
-  background: #4a69bb;
+  background: #ffcccc;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -36,7 +36,8 @@ body,
 
   #json {
     overflow: scroll;
-    background: #617be3;
+    background: #ffffff;
+    color: #000000;
   }
 }
 
@@ -63,5 +64,11 @@ body,
     height: 20px;
   }
 
-  #mini-canvas {}
+  #mini-canvas {
+  }
+}
+
+.link-active {
+  color: #ffffff;
+  translate: scale(1.5);
 }

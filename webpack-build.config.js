@@ -1,25 +1,22 @@
-const path = require('path')
-const join = path.join
+const path = require('path');
+const join = path.join;
 // const WebpackShellPlugin = require('webpack-shell-plugin');
 // const TerserPlugin = require('terser-webpack-plugin')
-const {
-  camelCase
-} = require('lodash')
-const webpack = require('webpack')
+const {camelCase} = require('lodash');
+const webpack = require('webpack');
 const {
   TsConfigPathsPlugin,
   CheckerPlugin
-} = require('awesome-typescript-loader')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const env = process && process.env && process.env.NODE_ENV
-const serverPort = process.env.npm_package_config_devPort || 8088
-const dev = !(env && env === 'production')
+} = require('awesome-typescript-loader');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const env = process && process.env && process.env.NODE_ENV;
+const serverPort = process.env.npm_package_config_devPort || 8088;
+const dev = !(env && env === 'production');
 /**
  * Update this variable if you change your library name
  */
 
-
-const libraryName = 'webgl-demo'
+const libraryName = 'rainbow';
 const plugins = [
   // new TerserPlugin({
   //   parallel: true,
@@ -27,12 +24,10 @@ const plugins = [
   //     ecma: 6,
   //   },
   // }),
-  new TsConfigPathsPlugin(),
+  new TsConfigPathsPlugin()
   // new WebpackShellPlugin({onBuildEnd:['node ./bin/generate-pcackage-json.js']})
-]
-let entry = [
-  `./src/index.ts`
-]
+];
+let entry = [`./src/index.ts`];
 module.exports = {
   mode: 'production',
   entry: {
@@ -50,11 +45,14 @@ module.exports = {
     extensions: ['.ts', '.js']
   },
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.ts$/,
-        use: [{
-          loader: 'ts-loader'
-        }]
+        use: [
+          {
+            loader: 'ts-loader'
+          }
+        ]
       },
       {
         test: /\.scss$/,
@@ -63,4 +61,4 @@ module.exports = {
     ]
   },
   plugins: plugins
-}
+};

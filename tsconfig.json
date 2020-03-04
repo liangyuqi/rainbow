@@ -20,13 +20,7 @@
     // 如何处理模块
     "moduleResolution": "node",
     // 编译过程中需要引入的库文件的列表
-    "lib": [
-      "dom",
-      "es5",
-      "es6",
-      "es7",
-      "es2015.promise"
-    ],
+    "lib": ["dom", "es5", "es6", "es7", "es2015.promise"],
     // 输出目录
     "outDir": "dist/lib",
     // 是否包含可以用于 debug 的 sourceMap
@@ -41,15 +35,11 @@
     "declaration": true,
 
     "declarationDir": "./types",
-    "typeRoots": [
-      "node_modules/@types"
-    ]
+    "typeRoots": ["node_modules/@types"]
   },
-  "exclude": [
-    "example/*"
+  "exclude": ["example/*"],
+  "include": [
+    "src/**/*"
+    // "examples-webgl/**/*",
   ]
-  // "include": [
-  //   "src/**/*",
-  //   "examples-webgl/**/*",
-  // ]
 }
