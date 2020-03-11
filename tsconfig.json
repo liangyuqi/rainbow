@@ -37,9 +37,6 @@
     "declarationDir": "./types",
     "typeRoots": ["node_modules/@types"]
   },
-  "exclude": ["example/*"],
-  "include": [
-    "src/**/*"
-    // "examples-webgl/**/*",
-  ]
+  // "exclude": ["example/*"],
+  "include": ["src/**/*.ts", "examples-webgl/**/*"]
 }
