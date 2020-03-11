@@ -1,6 +1,5 @@
 export class EventDispatcher {
-  /**事件列表*/
-  private eventList = {};
+  private eventList = {}; // 事件列表
 
   constructor() {}
 
@@ -59,16 +58,16 @@ export class EventDispatcher {
     listener: Function,
     thisObject: any
   ): void {
-    var arr: Array<any> = this.eventList[type];
+    let arr: Array<any> = this.eventList[type];
     if (arr) {
-      var len = arr.length;
-      for (var i = len - 1; i >= 0; i--) {
-        if (arr[i][0] == listener && arr[i][1] == thisObject) {
+      let len = arr.length;
+      for (let i = len - 1; i >= 0; i--) {
+        if (arr[i][0] === listener && arr[i][1] === thisObject) {
           arr.splice(i, 1);
         }
       }
     }
-    if (arr && arr.length == 0) {
+    if (arr && arr.length === 0) {
       this.eventList[type] = null;
       delete this.eventList[type];
     }
