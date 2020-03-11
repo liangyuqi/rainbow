@@ -76,7 +76,7 @@ module.exports = {
   },
   plugins: [
     new TsConfigPathsPlugin({
-      configFile: 'tsconfig.json'
+      configFile: path.resolve(__dirname, '../tsconfig.json')
     }),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({

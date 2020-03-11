@@ -1,23 +1,18 @@
-const path = require('path');
+// "@types/debug": "0.0.31",
+
+import path from 'path';
 const join = path.join;
-// const WebpackShellPlugin = require('webpack-shell-plugin');
-// const TerserPlugin = require('terser-webpack-plugin')
+const WebpackShellPlugin = require('webpack-shell-plugin');
 const {camelCase} = require('lodash');
-const webpack = require('webpack');
-const {
-  TsConfigPathsPlugin,
-  CheckerPlugin
-} = require('awesome-typescript-loader');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const {TsConfigPathsPlugin} = require('awesome-typescript-loader');
 const env = process && process.env && process.env.NODE_ENV;
-const serverPort = process.env.npm_package_config_devPort || 8088;
-const dev = !(env && env === 'production');
 /**
  * Update this variable if you change your library name
  */
 
 const libraryName = 'rainbow';
 const plugins = [
+  // new webpack.BannerPlugin('版权所有，翻版必究'),
   // new TerserPlugin({
   //   parallel: true,
   //   terserOptions: {
@@ -25,7 +20,7 @@ const plugins = [
   //   },
   // }),
   new TsConfigPathsPlugin()
-  // new WebpackShellPlugin({onBuildEnd:['node ./bin/generate-pcackage-json.js']})
+  // new WebpackShellPlugin({onBuildEnd:['node ./bin/generate-package-json.js']})
 ];
 let entry = [`./src/index.ts`];
 module.exports = {
@@ -40,6 +35,7 @@ module.exports = {
     libraryTarget: 'umd',
     library: camelCase(libraryName),
     filename: `${libraryName}.js`
+    // globalObject: 'this'
   },
   resolve: {
     extensions: ['.ts', '.js']
@@ -57,6 +53,26 @@ module.exports = {
       {
         test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'url-loader',
+        options: {
+          name: './images/[name].[ext]'
+          // limit: 8192
+        }
+      },
+      {
+        test: /\-worker\.ts$/,
+        use: [
+          {
+            loader: 'worker-loader',
+            options: {
+              inline: true,
+              publicPath: '/src/websocket/'
+            }
+          }
+        ]
       }
     ]
   },
