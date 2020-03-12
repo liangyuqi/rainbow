@@ -1,3 +1,6 @@
+/**
+ * eventBus
+ */
 export class EventDispatcher {
   private eventList = {}; // 事件列表
 

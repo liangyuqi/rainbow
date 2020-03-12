@@ -1,10 +1,14 @@
-import * as glMatrix from '../../lib/gl-matrix.js';
-import {PaintUnitInterface, DisplayStatus} from '../utils';
+import * as glMatrix from '../../lib/gl-matrix';
+
 import {Viewport} from '../viewport';
 import {vsSource} from './source/vsSource';
 import {fsSource} from './source/fsSource';
 import {loadShader} from './shader';
 import {createProgram} from './program';
+import {PaintUnitInterface} from '../interface/unit';
+import {DisplayStatus} from '../enum/unit';
+import {Searcher} from '../search/searcher';
+import {TextureFactroy} from '../render/texture';
 
 glMatrix.glMatrix.setMatrixArrayType(Float32Array);
 
@@ -12,7 +16,7 @@ export class Rainbow {
   private _gl: WebGL2RenderingContext;
   private _prg!: WebGLProgram;
   private _searcher;
-  // private _tf: TextureFactroy;
+  private _tf: TextureFactroy;
   private _vp: Viewport;
   private _unitList: PaintUnitInterface[][];
   private _vpScaleLocal;
@@ -34,8 +38,8 @@ export class Rainbow {
       throw Error(`当前环境不支持WebGL2渲染，请联系开发人员`);
     }
     this._unitList = [];
-    // this._searcher = new Searcher();
-    // this._tf = new TextureFactroy(this._gl);
+    this._searcher = new Searcher();
+    this._tf = new TextureFactroy(this._gl);
     this._vp = new Viewport(this);
     this._init();
     window['__unitList'] = this._unitList;
@@ -47,12 +51,12 @@ export class Rainbow {
   public get prg() {
     return this._prg;
   }
-  // public get searcher(): Searcher {
-  //   return this._searcher;
-  // }
-  // public get textureFactroy(): TextureFactroy {
-  //   return this._tf;
-  // }
+  public get searcher(): Searcher {
+    return this._searcher;
+  }
+  public get textureFactroy(): TextureFactroy {
+    return this._tf;
+  }
   public get viewport(): Viewport {
     return this._vp;
   }
@@ -184,5 +188,20 @@ export class Rainbow {
           });
       });
     }
+  }
+
+  public registVAO(unit: PaintUnitInterface, index: number = 0) {
+    if (!this._unitList[index]) {
+      this._unitList[index] = [];
+    }
+    this._unitList[index].push(unit);
+    return unit;
+  }
+
+  public unRegistVAO(unit: PaintUnitInterface, index: number = 0) {
+    if (index >= this._unitList.length) return;
+    const idx = this._unitList[index].indexOf(unit);
+    if (idx < 0) return;
+    this._unitList[index].splice(idx, 1);
   }
 }
