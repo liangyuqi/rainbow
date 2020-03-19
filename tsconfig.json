@@ -2,7 +2,7 @@
   "compilerOptions": {
     /* ts-node只支持commonjs规范 */
     // 指定模块代码生成:“none”、“commonjs”、“amd”、“system”、“umd”、“es2015”或“ESNext”
-    "module": "commonjs",
+    "module": "es2015",
     // 指定ECMAScript目标版本:“ES3”(默认)、“es5”、“ES2015”、“ES2016”、“ES2017”、“ES2018”或“ESNEXT”。
     "target": "es5",
     // 通过为所有导入创建名称空间对象，支持CommonJS和ES模块之间的互操作性。意味着“allowSyntheticDefaultImports”
@@ -10,7 +10,7 @@
     // 当目标为“ES5”或“ES3”时，为“for-of”、“spread”和“destructuring”中的迭代提供完全支持。
     "downlevelIteration": true,
     // 基本目录来解析非绝对模块名
-    // "baseUrl": "./", //?:Plugin could not be registered at 'module'. Hook was not found.
+    "baseUrl": "./",
     // 指定特殊模块的路径
     // "paths": {
     //   "@": ["examples-webgl"]

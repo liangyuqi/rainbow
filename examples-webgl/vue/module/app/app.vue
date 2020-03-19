@@ -1,18 +1,20 @@
 <template>
   <div id="app" v-cloak>
     <div id="left-bar">
-      <img src="assets/images/logo.png" height="150" style="marginBottom:20" />
+      <img src="../../../../assets/images/logo.png" height="150" style="marginBottom:20" />
       <div id="tools">
         <ul id="panel">
           <!-- <li class="text" v-text="version"></li> -->
           <!-- <li class="divide">Rainbow</li> -->
           <!-- <li id="robot"> 矩形 </li><input v-model="robotTotals"> -->
           <!-- <li id="btn-start">创建 </li>
-          <li id="btn-move">移动 </li> -->
+          <li id="btn-move">移动 </li>-->
           <li v-for="route in routes" v-bind:key="route.path">
-            <router-link :to="{path: route.path}" exact>{{
+            <router-link :to="{path: route.path}" exact>
+              {{
               route.meta.desc
-            }}</router-link>
+              }}
+            </router-link>
           </li>
         </ul>
       </div>
@@ -24,9 +26,7 @@
     </div>
     <div id="right-bar">
       <p @click="addLive2d" v-show="!hasLive2d">不要点此o。o</p>
-      <p @click="deleteLive2d" v-show="hasLive2d">
-        影响性能，删除 (暴力删除，其实并没有删干净o。o)
-      </p>
+      <p @click="deleteLive2d" v-show="hasLive2d">影响性能，删除 (暴力删除，其实并没有删干净o。o)</p>
       <!-- <canvas id="mini-canvas" width="100" height="100">
       </canvas>-->
     </div>
@@ -39,7 +39,7 @@
 
 <script lang="ts">
 // @ts-ignore
-import App from './app.ts';
+import App from "./app.ts";
 export default App;
 </script>
 

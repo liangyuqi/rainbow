@@ -6,20 +6,14 @@
   "directories": {
     "example": "example"
   },
-  "dependencies": {
-    "ts-loader": "^6.0.1",
-    "typescript": "^3.5.1",
-    "tslint": "^5.16.0",
-    "webpack": "^4.32.2",
-    "webpack-cli": "^3.3.2"
-  },
+  "dependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "create:filelist": "npx mddir",
     "dev": "webpack-dev-server --host 0.0.0.0 --config ./webpack-dev.config.js --port 8088 --open",
     "dev:example": "webpack-dev-server --config ./webpack-dev.config.js --content-base ./examples --host 10.232.8.48 --port 8088",
-    "build": "rm -rf dist/   &&  webpack --config ./webpack-build-library.config.ts",
-    "build:page": "rm -rf dist/ &&  webpack --config ./webpack-build-page.config.ts",
+    "build": "rm -rf dist/   &&  webpack --config ./webpack-build-library.config.js",
+    "build:page": "rm -rf dist/ &&  webpack --config ./webpack-build-page.config.js",
     "tslint-test": "tslint -c tslint.json 'src/**/*.ts'",
     "re-install": "rm -rf node_modules/ && rm -f package-lock.json && npm cache clear --force && npm install"
   },
@@ -34,9 +28,9 @@
   },
   "homepage": "https://github.com/liangyuqi/rainbow#readme",
   "devDependencies": {
-    "awesome-typescript-loader": "^3.1.0",
+    "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^1.0.1",
-    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "^3.0.4",
     "node-sass": "^4.13.0",
     "rbush": "^3.0.1",
     "sass-loader": "^7.1.0",
@@ -47,6 +41,7 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-standard": "^7.0.0",
     "typescript": "^3.5.1",
+    "url-loader": "^4.0.0",
     "vue": "^2.6.11",
     "vue-class-component": "^7.1.0",
     "vue-hot-reload-api": "^2.3.0",

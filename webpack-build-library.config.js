@@ -1,10 +1,9 @@
-// "@types/debug": "0.0.31",
-
-import path from 'path';
+const path = require('path');
 const join = path.join;
+const resolve = path.resolve;
 const WebpackShellPlugin = require('webpack-shell-plugin');
 const {camelCase} = require('lodash');
-const {TsConfigPathsPlugin} = require('awesome-typescript-loader');
+// const {TsConfigPathsPlugin} = require('awesome-typescript-loader');
 const env = process && process.env && process.env.NODE_ENV;
 /**
  * Update this variable if you change your library name
@@ -19,7 +18,7 @@ const plugins = [
   //     ecma: 6,
   //   },
   // }),
-  new TsConfigPathsPlugin()
+  // new TsConfigPathsPlugin()
   // new WebpackShellPlugin({onBuildEnd:['node ./bin/generate-package-json.js']})
 ];
 let entry = [`./src/index.ts`];
@@ -58,6 +57,7 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'url-loader',
         options: {
+          esModule: false, // 这里设置为false，否则webpack打包img后src为“[object Module]”
           name: './images/[name].[ext]'
           // limit: 8192
         }

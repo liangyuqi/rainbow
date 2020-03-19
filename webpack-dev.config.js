@@ -4,10 +4,7 @@ const resolve = path.resolve;
 
 const {camelCase} = require('lodash');
 const webpack = require('webpack');
-const {
-  TsConfigPathsPlugin,
-  CheckerPlugin
-} = require('awesome-typescript-loader');
+// const {TsConfigPathsPlugin} = require('awesome-typescript-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const env = process && process.env && process.env.NODE_ENV;
 const serverPort = process.env.npm_package_config_devPort || 8081;
@@ -68,6 +65,8 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'url-loader',
         options: {
+          esModule: false, // 这里设置为false，否则webpack打包img后src为“[object Module]”
+
           name: './images/[name].[ext]'
           // limit: 8192
         }
@@ -75,9 +74,9 @@ module.exports = {
     ]
   },
   plugins: [
-    new TsConfigPathsPlugin({
-      configFile: path.resolve(__dirname, '../tsconfig.json')
-    }),
+    // new TsConfigPathsPlugin({
+    //   configFile: path.resolve(__dirname, '../tsconfig.json')
+    // }),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       inject: true,
@@ -99,9 +98,9 @@ module.exports = {
       components: resolve('src/components')
     },
     plugins: [
-      new TsConfigPathsPlugin({
-        configFile: 'tsconfig.json'
-      })
+      // new TsConfigPathsPlugin({
+      //   configFile: 'tsconfig.json'
+      // })
     ]
   },
   devServer: {
