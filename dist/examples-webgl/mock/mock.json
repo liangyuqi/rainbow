@@ -1,0 +1,981 @@
+{
+  "warehouseID": "267375907197419537",
+  "floors": [
+      {
+          "name": "",
+          "floorTag": "1",
+          "floorNum": 0,
+          "floorID": "1",
+          "mapDetail": [
+              {
+                  "mapID": 1,
+                  "name": "",
+                  "mapType": 1,
+                  "height": 10000,
+                  "width": 10000,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "offsetZ": 0,
+                  "theta": 0,
+                  "nodes": [
+                      {
+                          "nodeID": "156889810916",
+                          "x": 500,
+                          "y": 9500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810931",
+                          "x": 1500,
+                          "y": 9500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810946",
+                          "x": 2500,
+                          "y": 9500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810961",
+                          "x": 3500,
+                          "y": 9500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810976",
+                          "x": 4500,
+                          "y": 9500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810991",
+                          "x": 5500,
+                          "y": 9500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109106",
+                          "x": 6500,
+                          "y": 9500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109121",
+                          "x": 7500,
+                          "y": 9500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109136",
+                          "x": 8500,
+                          "y": 9500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109151",
+                          "x": 9500,
+                          "y": 9500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810917",
+                          "x": 500,
+                          "y": 8500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810932",
+                          "x": 1500,
+                          "y": 8500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810947",
+                          "x": 2500,
+                          "y": 8500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810962",
+                          "x": 3500,
+                          "y": 8500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810977",
+                          "x": 4500,
+                          "y": 8500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810992",
+                          "x": 5500,
+                          "y": 8500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109107",
+                          "x": 6500,
+                          "y": 8500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109122",
+                          "x": 7500,
+                          "y": 8500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109137",
+                          "x": 8500,
+                          "y": 8500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109152",
+                          "x": 9500,
+                          "y": 8500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810918",
+                          "x": 500,
+                          "y": 7500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810933",
+                          "x": 1500,
+                          "y": 7500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810948",
+                          "x": 2500,
+                          "y": 7500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810963",
+                          "x": 3500,
+                          "y": 7500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810978",
+                          "x": 4500,
+                          "y": 7500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810993",
+                          "x": 5500,
+                          "y": 7500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109108",
+                          "x": 6500,
+                          "y": 7500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109123",
+                          "x": 7500,
+                          "y": 7500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109138",
+                          "x": 8500,
+                          "y": 7500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109153",
+                          "x": 9500,
+                          "y": 7500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810919",
+                          "x": 500,
+                          "y": 6500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810934",
+                          "x": 1500,
+                          "y": 6500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810949",
+                          "x": 2500,
+                          "y": 6500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810964",
+                          "x": 3500,
+                          "y": 6500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810979",
+                          "x": 4500,
+                          "y": 6500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810994",
+                          "x": 5500,
+                          "y": 6500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109109",
+                          "x": 6500,
+                          "y": 6500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109124",
+                          "x": 7500,
+                          "y": 6500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109139",
+                          "x": 8500,
+                          "y": 6500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109154",
+                          "x": 9500,
+                          "y": 6500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810920",
+                          "x": 500,
+                          "y": 5500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810935",
+                          "x": 1500,
+                          "y": 5500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810950",
+                          "x": 2500,
+                          "y": 5500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810965",
+                          "x": 3500,
+                          "y": 5500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810980",
+                          "x": 4500,
+                          "y": 5500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810995",
+                          "x": 5500,
+                          "y": 5500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109110",
+                          "x": 6500,
+                          "y": 5500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109125",
+                          "x": 7500,
+                          "y": 5500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109140",
+                          "x": 8500,
+                          "y": 5500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109155",
+                          "x": 9500,
+                          "y": 5500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810921",
+                          "x": 500,
+                          "y": 4500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810936",
+                          "x": 1500,
+                          "y": 4500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810951",
+                          "x": 2500,
+                          "y": 4500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810966",
+                          "x": 3500,
+                          "y": 4500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810981",
+                          "x": 4500,
+                          "y": 4500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810996",
+                          "x": 5500,
+                          "y": 4500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109111",
+                          "x": 6500,
+                          "y": 4500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109126",
+                          "x": 7500,
+                          "y": 4500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109141",
+                          "x": 8500,
+                          "y": 4500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109156",
+                          "x": 9500,
+                          "y": 4500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810922",
+                          "x": 500,
+                          "y": 3500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810937",
+                          "x": 1500,
+                          "y": 3500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810952",
+                          "x": 2500,
+                          "y": 3500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810967",
+                          "x": 3500,
+                          "y": 3500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810982",
+                          "x": 4500,
+                          "y": 3500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810997",
+                          "x": 5500,
+                          "y": 3500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109112",
+                          "x": 6500,
+                          "y": 3500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109127",
+                          "x": 7500,
+                          "y": 3500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109142",
+                          "x": 8500,
+                          "y": 3500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109157",
+                          "x": 9500,
+                          "y": 3500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810923",
+                          "x": 500,
+                          "y": 2500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810938",
+                          "x": 1500,
+                          "y": 2500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810953",
+                          "x": 2500,
+                          "y": 2500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810968",
+                          "x": 3500,
+                          "y": 2500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810983",
+                          "x": 4500,
+                          "y": 2500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810998",
+                          "x": 5500,
+                          "y": 2500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109113",
+                          "x": 6500,
+                          "y": 2500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109128",
+                          "x": 7500,
+                          "y": 2500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109143",
+                          "x": 8500,
+                          "y": 2500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109158",
+                          "x": 9500,
+                          "y": 2500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810924",
+                          "x": 500,
+                          "y": 1500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810939",
+                          "x": 1500,
+                          "y": 1500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810954",
+                          "x": 2500,
+                          "y": 1500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810969",
+                          "x": 3500,
+                          "y": 1500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810984",
+                          "x": 4500,
+                          "y": 1500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810999",
+                          "x": 5500,
+                          "y": 1500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109114",
+                          "x": 6500,
+                          "y": 1500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109129",
+                          "x": 7500,
+                          "y": 1500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109144",
+                          "x": 8500,
+                          "y": 1500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109159",
+                          "x": 9500,
+                          "y": 1500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810925",
+                          "x": 500,
+                          "y": 500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810940",
+                          "x": 1500,
+                          "y": 500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810955",
+                          "x": 2500,
+                          "y": 500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810970",
+                          "x": 3500,
+                          "y": 500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "156889810985",
+                          "x": 4500,
+                          "y": 500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109100",
+                          "x": 5500,
+                          "y": 500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109115",
+                          "x": 6500,
+                          "y": 500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109130",
+                          "x": 7500,
+                          "y": 500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109145",
+                          "x": 8500,
+                          "y": 500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      },
+                      {
+                          "nodeID": "1568898109160",
+                          "x": 9500,
+                          "y": 500,
+                          "z": 0,
+                          "property": {
+                              "avoidableDistance": 0
+                          }
+                      }
+                  ],
+                  "edges": [],
+                  "deviceTypes": [],
+                  "originMapID": ""
+              }
+          ],
+          "width": 10000,
+          "height": 10000
+      }
+  ],
+  "zones": [
+      {
+          "zoneID": "15688982861",
+          "mapIDs": [
+              1
+          ],
+          "type": 32,
+          "property": "{\"name\":\"调度段-桥\",\"relatedConfs\":[],\"positionIDs\":[\"156889810949\",\"156889810964\",\"156889810979\"],\"schedulerType\":\"1\"}"
+      },
+      {
+          "zoneID": "15689496001",
+          "mapIDs": [
+              1
+          ],
+          "type": 32,
+          "property": "{\"name\":\"调度段-无\",\"relatedConfs\":[],\"positionIDs\":[\"156889810947\",\"156889810962\",\"156889810977\"],\"schedulerType\":\"0\"}"
+      },
+      {
+          "zoneID": "15689496192",
+          "mapIDs": [
+              1
+          ],
+          "type": 32,
+          "property": "{\"name\":\"调度段-胡同\",\"relatedConfs\":[],\"positionIDs\":[\"156889810951\",\"156889810966\",\"156889810981\"],\"schedulerType\":\"2\"}"
+      },
+      {
+          "zoneID": "15689496574",
+          "mapIDs": [
+              1
+          ],
+          "type": 27,
+          "property": "{\"name\":\"地理围栏-1\",\"relatedConfs\":[],\"positionIDs\":[\"156889810953\",\"156889810968\",\"156889810983\"]}"
+      }
+  ],
+  "biz": {
+      "regions": [],
+      "stationGroups": []
+  },
+  "configures": [
+      {
+          "confID": "c1568898561902",
+          "type": 1,
+          "property": "{\"deviceType\":8,\"deviceStatus\":[1,2,3,4],\"name\":\"111\",\"deviceDesc\":\"\"}"
+      },
+      {
+          "confID": "c1568898570532",
+          "type": 1,
+          "property": "{\"deviceType\":7,\"deviceStatus\":[],\"name\":\"2222\",\"deviceDesc\":\"two_key\"}"
+      }
+  ]
+}

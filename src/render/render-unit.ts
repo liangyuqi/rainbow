@@ -1,13 +1,14 @@
 import * as glMatrix from '../../lib/gl-matrix.js';
-import {PaintUnitInterface} from '../interface/unit.js';
-import {Rainbow} from '../index.js';
-import {MeshConfig} from '../graph/mesh.js';
-import {DisplayStatus} from '../enum/unit.js';
+
 import {
   getVertexPosition,
   getVertexAfterExpand,
   IdCreator
 } from '../utils/index';
+import {PaintUnitInterface} from 'src/interface/unit.js';
+import {Rainbow} from 'src/index.js';
+import {MeshConfig} from 'src/graph/mesh.js';
+import {DisplayStatus} from 'src/enum/unit.js';
 
 const MAX_INSTANCE = 3000;
 const mat4 = glMatrix.mat4;
