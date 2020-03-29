@@ -92,10 +92,10 @@ module.exports = {
     extensions: ['.js', '.vue', '.json', '.ts'],
     alias: {
       vue$: 'vue/dist/vue',
-      '~': resolve('node_modules'),
-      '@': resolve('src'),
-      common: resolve('src/common'),
-      components: resolve('src/components')
+      '@': path.resolve(__dirname, './examples-webgl'),
+      src: path.resolve(__dirname, './src')
+      // common: resolve('src/common'),
+      // components: resolve('src/components')
     },
     plugins: [
       // new TsConfigPathsPlugin({

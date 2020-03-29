@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import { Rainbow } from '../../../../../../src/rainbow';
+import { ImageTexture } from 'src/render/texture';
 export default class App extends Vue {
     rainbow: Rainbow;
     canvas: HTMLCanvasElement;
@@ -8,6 +9,19 @@ export default class App extends Vue {
     vp: import('/Users/bytedance/Desktop/github/rainbow/src/viewport/index').Viewport;
     isDragging: boolean;
     dragLastPoint: any[];
+    uvList: ImageTexture[];
     mounted(): void;
+    initCanvas(): void;
+    /**
+     * 画矩形 demo
+     */
+    drawMesh(): void;
+    /**
+     * 画抖音 demo
+     */
+    drawTikTok(): void;
+    /**
+     * 绑定事件交互
+     */
     initEvent(): void;
 }

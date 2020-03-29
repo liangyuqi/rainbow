@@ -3,6 +3,13 @@ import Component from 'vue-class-component';
 import {Rainbow} from '../../../../../../src/rainbow';
 import {Generator} from '../../../../../../src/render/generator';
 import {RectMesh} from '../../../../../../src/graph/mesh';
+import {
+  GetTextureByType,
+  PreloadAllImages,
+  IMAGE_SOURCE_LIST
+} from '@/utils/resource';
+import {ImageEnum} from '@/enum/image';
+import {ImageTexture} from 'src/render/texture';
 
 @Component
 export default class App extends Vue {
@@ -14,17 +21,10 @@ export default class App extends Vue {
   vp!: import('/Users/bytedance/Desktop/github/rainbow/src/viewport/index').Viewport;
   isDragging!: boolean;
   dragLastPoint!: any[];
-  // 声明周期钩子
+  uvList!: ImageTexture[];
+
   mounted() {
-    this.canvas = document.getElementById('canvas') as HTMLCanvasElement;
-    this.canvas.style.transitionProperty = 'transform';
-    this.canvas.style.userSelect = 'none';
-    this.canvas.width = document.getElementById('main-canvas')!.clientWidth;
-    this.canvas.height = document.getElementById('main-canvas')!.clientHeight;
-    this.canvas.style.position = 'absolute';
-    this.canvas.style.top = '0';
-    this.canvas.style.left = '0';
-    this.canvas.style.zIndex = '1';
+    this.initCanvas();
 
     if (this.canvas) {
       this.rainbow = new Rainbow(this.canvas);
@@ -36,22 +36,65 @@ export default class App extends Vue {
       this.dragLastPoint = [];
       this.rainbow.viewport.setBackgroundColor([255, 102, 102, 255]);
 
-      const g = new Generator(this.rainbow, new RectMesh());
-      for (let i = 0; i < 10; i++) {
-        let obj = g.instance().show();
-        obj.size = [100 + i * 100, 100 + i * 100];
-        obj.borderWidth = 0.5;
-        obj.backgroundColor = [180, 180, 180, 255];
-        obj.borderColor = [255, 255, 255, 255];
-        obj.translation = [200, 200];
-        //  obj.outViewportStatus = OutViewportStatus.NONE;
-      }
-
-      this.initEvent();
-      this.rainbow.render();
+      PreloadAllImages(IMAGE_SOURCE_LIST, this.tf)
+        .then((res: any) => {
+          this.uvList = res;
+          this.drawTikTok();
+          this.drawMesh();
+          this.initEvent();
+          this.rainbow.render();
+        })
+        .catch(e => {
+          console.error(e);
+        });
     }
   }
 
+  initCanvas() {
+    this.canvas = document.getElementById('canvas') as HTMLCanvasElement;
+    this.canvas.style.transitionProperty = 'transform';
+    this.canvas.style.userSelect = 'none';
+    this.canvas.width = document.getElementById('main-canvas')!.clientWidth;
+    this.canvas.height = document.getElementById('main-canvas')!.clientHeight;
+    this.canvas.style.position = 'absolute';
+    this.canvas.style.top = '0';
+    this.canvas.style.left = '0';
+    this.canvas.style.zIndex = '1';
+  }
+
+  /**
+   * 画矩形 demo
+   */
+  drawMesh() {
+    const g = new Generator(this.rainbow, new RectMesh());
+    for (let i = 0; i < 10; i++) {
+      let obj = g.instance().show();
+      obj.size = [100 + i * 100, 100 + i * 100];
+      obj.borderWidth = 0.5;
+      obj.backgroundColor = [180, 180, 180, 255];
+      obj.borderColor = [255, 255, 255, 255];
+      obj.translation = [200, 200];
+      //  obj.outViewportStatus = OutViewportStatus.NONE;
+    }
+  }
+
+  /**
+   * 画抖音 demo
+   */
+  drawTikTok() {
+    const g = new Generator(this.rainbow, new RectMesh(), 0, 0, 3000);
+    let obj = g.instance().show();
+    obj.size = [100, 100];
+    obj.translation = [800, 800];
+    obj.texture = GetTextureByType(ImageEnum.TikTok, this.uvList);
+    // obj.borderWidth = 2;
+    // obj.borderColor = [255, 255, 255, 255];
+    //  obj.outViewportStatus = OutViewportStatus.NONE;
+  }
+
+  /**
+   * 绑定事件交互
+   */
   initEvent() {
     // 鼠标缩放回调
     const _wheelHandler = evt => {
