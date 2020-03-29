@@ -49,12 +49,13 @@ module.exports = {
   entry: {
     index: './examples-webgl/index.ts'
   },
-  devtool: 'source-map',
+  // devtool: 'source-map',
   output: {
     path: join(__dirname, 'dist'),
     libraryTarget: 'umd',
     library: camelCase(libraryName),
-    filename: `${libraryName}.js`
+    filename: `${libraryName}.[contenthash:8].js`,
+    chunkFilename: `${libraryName}.[contenthash:8].async.js`
     // globalObject: 'this'
   },
   resolve: {
