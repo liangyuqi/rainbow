@@ -12,9 +12,9 @@
     // 基本目录来解析非绝对模块名
     "baseUrl": "./",
     // 指定特殊模块的路径
-    // "paths": {
-    //   "@": ["examples-webgl"]
-    // },
+    "paths": {
+      "@/*": ["examples-webgl/*"]
+    },
     "allowSyntheticDefaultImports": true, // 允许从没有设置默认导出的模块中默认导入
     "experimentalDecorators": true, //  启用装饰器
     // 如何处理模块
