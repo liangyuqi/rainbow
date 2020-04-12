@@ -13,7 +13,8 @@
     "baseUrl": "./",
     // 指定特殊模块的路径
     "paths": {
-      "@/*": ["examples-webgl/*"]
+      "@/*": ["examples-webgl/*"],
+      "~/*": ["/*"]
     },
     "allowSyntheticDefaultImports": true, // 允许从没有设置默认导出的模块中默认导入
     "experimentalDecorators": true, //  启用装饰器

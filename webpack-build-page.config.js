@@ -2,6 +2,14 @@ const path = require('path');
 const join = path.join;
 const resolve = path.resolve;
 
+const os = require('os');
+const size = os.cpus().length;
+
+const TerserPlugin = require('terser-webpack-plugin');
+const AutoDllPlugin = require('autodll-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin;
+
 const {camelCase} = require('lodash');
 // const {TsConfigPathsPlugin} = require('awesome-typescript-loader');
 
@@ -39,7 +47,20 @@ const plugins = [
       from: path.join(__dirname, 'examples-webgl/mock'),
       to: path.join(__dirname, 'dist/examples-webgl/mock')
     }
-  ])
+  ]),
+  new AutoDllPlugin({
+    inject: true,
+    filename: '[name].[contenthash:8].js',
+    path: './vendor',
+    entry: {
+      core: [
+        // 不能分成多个entry，因为每个entry都可能会依赖同样的库，但同样的库无法通过commonChunks进行合并。
+        'vue',
+        'vue-router'
+      ]
+    }
+  })
+  // new BundleAnalyzerPlugin()
 ];
 
 module.exports = {
@@ -52,6 +73,9 @@ module.exports = {
   // devtool: 'source-map',
   output: {
     path: join(__dirname, 'dist'),
+
+    publicPath: './',
+
     libraryTarget: 'umd',
     library: camelCase(libraryName),
     filename: `${libraryName}.[contenthash:8].js`,
@@ -113,6 +137,31 @@ module.exports = {
           // limit: 8192
         }
       }
+    ]
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        common: {
+          name: 'common',
+          chunks: 'all',
+          priority: 1,
+          minChunks: 2,
+          reuseExistingChunk: true
+        }
+      }
+    },
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          output: {
+            comments: false
+          }
+        },
+        parallel: size,
+        cache: true
+        // chunkFilter: chunk => chunk.name !== 'common'
+      })
     ]
   },
   plugins: plugins

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import {initShaders} from '@/webgl/initShaders';
-
+// import '~/lib/webgl-utils.js';
 const VERTEXRS = [0.0, 0.5, -0.5, -0.5, 0.5, -0.5];
 
 // 顶点着色器程序
@@ -40,6 +40,7 @@ export default class App extends Vue {
     canvas.style.zIndex = '1';
 
     if (canvas) {
+      // getWebGLContext();
       let gl =
         canvas.getContext('webgl') ||
         (canvas.getContext('experimental-webgl') as WebGLRenderingContext);
@@ -73,7 +74,7 @@ export default class App extends Vue {
       // 给uniform变量赋值
       // gl.uniform4f(u_Translation, Tx, Ty, Tz, 0.0);
 
-      // 指定一个覆盖（清空）canvas的颜色 ，本质是setColor,他把 背景色存到了 webgl system中的glCOLOR_BUFFER_BIT，得手动render一下
+      // 指定一个覆盖（清空）canvas的rgba颜色 ，本质是setColor,他把 背景色存到了 webgl system中的glCOLOR_BUFFER_BIT，得手动render一下
       gl.clearColor(0.0, 0.0, 0.5, 1.0);
 
       // 清除canvas，会清除全部，再使用背景色 填充

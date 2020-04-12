@@ -17,7 +17,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
   entry: {
-    index: './examples-webgl/index.ts'
+    index: './examples-webgl/index.ts',
   },
   devtool: 'none',
   output: {
@@ -25,21 +25,21 @@ module.exports = {
     libraryTarget: 'umd',
     library: camelCase(libraryName),
     filename: `${libraryName}.js`,
-    globalObject: 'this'
+    globalObject: 'this',
   },
   module: {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
       },
       {
         test: /\.tsx?$/,
         loader: 'ts-loader',
         exclude: /node_modules/,
         options: {
-          appendTsSuffixTo: [/\.vue$/] // vue 单文件写法
-        }
+          appendTsSuffixTo: [/\.vue$/], // vue 单文件写法
+        },
       },
       {
         test: /\-worker\.ts$/,
@@ -48,18 +48,18 @@ module.exports = {
             loader: 'worker-loader',
             options: {
               inline: true,
-              publicPath: '/src/websocket/'
-            }
-          }
-        ]
+              publicPath: '/src/websocket/',
+            },
+          },
+        ],
       },
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -67,11 +67,11 @@ module.exports = {
         options: {
           esModule: false, // 这里设置为false，否则webpack打包img后src为“[object Module]”
 
-          name: './images/[name].[ext]'
+          name: './images/[name].[ext]',
           // limit: 8192
-        }
-      }
-    ]
+        },
+      },
+    ],
   },
   plugins: [
     // new TsConfigPathsPlugin({
@@ -85,15 +85,16 @@ module.exports = {
       filename: 'index.html',
       template: join(__dirname, 'examples-webgl/index.html'),
       hash: true,
-      chunks: ['index'] // 和entry相对应
-    })
+      chunks: ['index'], // 和entry相对应
+    }),
   ],
   resolve: {
     extensions: ['.js', '.vue', '.json', '.ts'],
     alias: {
       vue$: 'vue/dist/vue',
       '@': path.resolve(__dirname, './examples-webgl'),
-      src: path.resolve(__dirname, './src')
+      src: path.resolve(__dirname, './src'),
+      '~': path.resolve(__dirname, './'),
       // common: resolve('src/common'),
       // components: resolve('src/components')
     },
@@ -101,14 +102,14 @@ module.exports = {
       // new TsConfigPathsPlugin({
       //   configFile: 'tsconfig.json'
       // })
-    ]
+    ],
   },
   devServer: {
     hot: true,
     contentBase: resolve(__dirname),
     port: serverPort,
-    publicPath: '/'
-  }
+    publicPath: '/',
+  },
   // node: {
   //   fs:'empty'
   // }
