@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import {initShaders} from '@/webgl/initShaders';
-import '~/lib/webgl-utils.js';
+// import '~/lib/webgl-utils.js';
 const VERTEXRS = [0.0, 0.5, -0.5, -0.5, 0.5, -0.5];
 
 // 顶点着色器程序
