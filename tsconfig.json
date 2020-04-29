@@ -14,6 +14,7 @@
     // 指定特殊模块的路径
     "paths": {
       "@/*": ["examples-webgl/*"],
+      "src/*": ["src/*"],
       "~/*": ["/*"]
     },
     "allowSyntheticDefaultImports": true, // 允许从没有设置默认导出的模块中默认导入
@@ -38,6 +39,8 @@
     "declarationDir": "./types",
     "typeRoots": ["node_modules/@types"]
   },
-  // "exclude": ["example/*"],
+  // "exclude": ["example/*", "examples-webgl/**/*"],
+  // "include": ["src/**/*.ts"],
+  "exclude": ["example/*"],
   "include": ["src/**/*.ts", "examples-webgl/**/*"]
 }

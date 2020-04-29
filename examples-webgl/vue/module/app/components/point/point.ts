@@ -7,7 +7,7 @@ const VSHADER_SOURCE = `
         attribute vec4 a_Position;
         void main(){
           gl_Position = a_Position;
-          gl_PointSize = 10.0;
+          gl_PointSize = 5.0;
         }`;
 
 // 片元着色器程序
@@ -57,14 +57,13 @@ export default class App extends Vue {
         console.error('无法获取变量的存储位置');
         return;
       }
-
       // 指定一个覆盖（清空）this.canvas的颜色
       this.gl.clearColor(0.0, 0.0, 0.0, 1.0);
 
       // 清除this.canvas
       this.gl.clear(this.gl.COLOR_BUFFER_BIT);
 
-      // 将三个点绘制出来
+      // 将1个点绘制出来
       this.gl.drawArrays(this.gl.POINTS, 0, 1);
     }
   }
@@ -80,7 +79,7 @@ export default class App extends Vue {
     // 清除this.canvas
     this.gl.clear(this.gl.COLOR_BUFFER_BIT);
 
-    this.g_points.forEach(point => {
+    this.g_points.forEach((point) => {
       // 循环添加点
       // 将点的位置传递到变量中a_position
       this.gl.vertexAttrib3f(this.a_Position, point.x, point.y, 0.0);

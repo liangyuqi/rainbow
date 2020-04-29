@@ -19,9 +19,9 @@ const FSHADER_SOURCE = `
         }`;
 
 // 声明xyz三个方向上平移的距离
-const Tx = 0.3,
-  Ty = 0.3,
-  Tz = 0;
+const Tx = 0.3;
+const Ty = 0.3;
+const Tz = 0;
 
 @Component
 export default class App extends Vue {
@@ -42,7 +42,7 @@ export default class App extends Vue {
     if (canvas) {
       // getWebGLContext();
       let gl =
-        canvas.getContext('webgl') ||
+        canvas.getContext('webgl2') ||
         (canvas.getContext('experimental-webgl') as WebGLRenderingContext);
       // 不支持WebGL的浏览器将打印一个错误，并结束代码运行
       if (!gl) {
@@ -78,6 +78,7 @@ export default class App extends Vue {
       gl.clearColor(0.0, 0.0, 0.5, 1.0);
 
       // 清除canvas，会清除全部，再使用背景色 填充
+
       gl.clear(gl.COLOR_BUFFER_BIT);
 
       // 将三个点绘制出来
