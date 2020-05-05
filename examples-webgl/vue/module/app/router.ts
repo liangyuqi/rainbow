@@ -45,6 +45,9 @@ const Triangles = () => import('./webgl/triangles/triangles.vue');
 const Arrow = () => import('./webgl/arrow/arrow.vue');
 
 // @ts-ignore
+const Cube = () => import('./webgl/cube/cube.vue');
+
+// @ts-ignore
 const QuickStart = () => import('./webgl/quick-start/index.vue');
 
 export const routes = [
@@ -90,8 +93,13 @@ export const routes = [
 
       {
         path: 'arrow',
-        meta: {desc: '剪头', level: 1},
+        meta: {desc: '箭头', level: 1},
         component: Arrow,
+      },
+      {
+        path: 'cube',
+        meta: {desc: '立方体', level: 1},
+        component: Cube,
       },
     ],
   },
