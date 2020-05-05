@@ -41,6 +41,5 @@
   },
   // "exclude": ["example/*", "examples-webgl/**/*"],
   // "include": ["src/**/*.ts"],
-  "exclude": ["example/*"],
   "include": ["src/**/*.ts", "examples-webgl/**/*"]
 }

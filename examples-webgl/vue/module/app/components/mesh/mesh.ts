@@ -6,10 +6,11 @@ import {RectMesh} from '../../../../../../src/graph/mesh';
 import {
   GetTextureByType,
   PreloadAllImages,
-  IMAGE_SOURCE_LIST
+  IMAGE_SOURCE_LIST,
 } from '@/utils/resource';
 import {ImageEnum} from '@/enum/image';
 import {ImageTexture} from 'src/render/texture';
+import {initCanvas} from '@/utils/webgl';
 
 @Component
 export default class App extends Vue {
@@ -24,7 +25,7 @@ export default class App extends Vue {
   uvList!: ImageTexture[];
 
   mounted() {
-    this.initCanvas();
+    this.canvas = initCanvas();
 
     if (this.canvas) {
       this.rainbow = new Rainbow(this.canvas);
@@ -44,22 +45,10 @@ export default class App extends Vue {
           this.initEvent();
           this.rainbow.render();
         })
-        .catch(e => {
+        .catch((e) => {
           console.error(e);
         });
     }
-  }
-
-  initCanvas() {
-    this.canvas = document.getElementById('canvas') as HTMLCanvasElement;
-    this.canvas.style.transitionProperty = 'transform';
-    this.canvas.style.userSelect = 'none';
-    this.canvas.width = document.getElementById('main-canvas')!.clientWidth;
-    this.canvas.height = document.getElementById('main-canvas')!.clientHeight;
-    this.canvas.style.position = 'absolute';
-    this.canvas.style.top = '0';
-    this.canvas.style.left = '0';
-    this.canvas.style.zIndex = '1';
   }
 
   /**
@@ -97,7 +86,7 @@ export default class App extends Vue {
    */
   initEvent() {
     // 鼠标缩放回调
-    const _wheelHandler = evt => {
+    const _wheelHandler = (evt) => {
       if (evt.preventDefault) {
         evt.preventDefault();
       }
@@ -110,13 +99,13 @@ export default class App extends Vue {
     };
 
     // 开始视口拖动
-    const _dragStart = evt => {
+    const _dragStart = (evt) => {
       this.isDragging = true;
       this.dragLastPoint = [evt.x, evt.y];
     };
 
     // 视口拖动
-    const _drag = evt => {
+    const _drag = (evt) => {
       if (!this.isDragging) return;
       const dx = evt.x - this.dragLastPoint[0];
       const dy = evt.y - this.dragLastPoint[1];
@@ -125,7 +114,7 @@ export default class App extends Vue {
     };
 
     // 视口拖动结束
-    const _dragEnd = evt => {
+    const _dragEnd = (evt) => {
       this.isDragging = false;
       this.dragLastPoint = [];
     };

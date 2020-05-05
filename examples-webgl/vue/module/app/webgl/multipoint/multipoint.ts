@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import {initShaders} from '@/webgl/initShaders';
+import {initCanvas} from '@/utils/webgl';
 
 // 顶点着色器程序
 const VSHADER_SOURCE = `
@@ -25,18 +26,10 @@ export default class App extends Vue {
   canvas;
   // 声明周期钩子
   mounted() {
-    this.canvas = document.getElementById('canvas') as HTMLCanvasElement;
-    this.canvas.style.transitionProperty = 'transform';
-    this.canvas.style.userSelect = 'none';
-    this.canvas.width = document.getElementById('main-canvas')!.clientWidth;
-    this.canvas.height = document.getElementById('main-canvas')!.clientHeight;
-    this.canvas.style.position = 'absolute';
-    this.canvas.style.top = '0';
-    this.canvas.style.left = '0';
-    this.canvas.style.zIndex = '1';
+    this.canvas = initCanvas();
 
     if (this.canvas) {
-      this.gl = this.canvas.getContext('webgl');
+      this.gl = this.canvas.getContext('webgl2');
       // 不支持WebGL的浏览器将打印一个错误，并结束代码运行
       if (!this.gl) {
         console.error('浏览器不支持WebGL');
@@ -74,7 +67,9 @@ export default class App extends Vue {
     x = (x - this.canvas.width / 2) / (this.canvas.width / 2); // 计算出x轴WebGL的浮点数
     y = (this.canvas.height / 2 - y) / (this.canvas.height / 2); // 计算出y轴WebGL的浮点数
 
-    this.g_points.push({x: x, y: y}); // 将数据存入数组
+    this.g_points.push({x, y});
+    // this.g_points.push(x);
+    // this.g_points.push(y); // 将数据存入数组
 
     // 清除this.canvas
     this.gl.clear(this.gl.COLOR_BUFFER_BIT);
@@ -86,5 +81,46 @@ export default class App extends Vue {
       // 绘制点
       this.gl.drawArrays(this.gl.POINTS, 0, 1);
     });
+
+    // 使用顶点缓冲区对象和类型化数组
+    // 设置顶点位置
+    // let n = this.initVertexBuffers(this.gl);
+    // 将n个点绘制出来
+    // this.gl.drawArrays(this.gl.POINTS, 0, n);
+  }
+
+  initVertexBuffers(gl) {
+    let vertices = new Float32Array(this.g_points);
+    // console.log(vertices);
+    let n = this.g_points.length / 2; // 绘制点的个数
+
+    // 创建缓冲区对象
+    let vertexBuffer = gl.createBuffer();
+    if (!vertexBuffer) {
+      console.error('创建缓冲区对象失败');
+      return -1;
+    }
+
+    // 将缓冲区对象绑定到目标
+    gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+
+    // 向缓冲区对象中写入数据
+    gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+
+    // 获取attribute变量的存储位置
+    let a_Position = gl.getAttribLocation(gl.program, 'a_Position');
+
+    if (a_Position < 0) {
+      console.error('无法获取变量的存储位置');
+      return;
+    }
+
+    // 将缓冲区对象分配给a_Position变量
+    gl.vertexAttribPointer(a_Position, 2, gl.FLOAT, false, 0, 0);
+
+    // 链接a_Position变量与分配给它的缓冲区对象
+    gl.enableVertexAttribArray(a_Position);
+
+    return n;
   }
 }

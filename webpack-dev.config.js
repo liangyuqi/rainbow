@@ -35,11 +35,15 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
-        loader: 'ts-loader',
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              appendTsSuffixTo: [/\.vue$/], // vue 单文件写法
+            },
+          },
+        ],
         exclude: /node_modules/,
-        options: {
-          appendTsSuffixTo: [/\.vue$/], // vue 单文件写法
-        },
       },
       {
         test: /\-worker\.ts$/,
