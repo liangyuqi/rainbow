@@ -1,7 +1,11 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import {Rainbow} from '../../../../../../src/rainbow';
-import {Generator} from '../../../../../../src/render/generator';
+import {
+  Generator,
+  TextFieldGenerator,
+  TextFieldVerticalAlign,
+} from '../../../../../../src/render/generator';
 import {RectMesh} from '../../../../../../src/graph/mesh';
 import {
   GetTextureByType,
@@ -11,6 +15,7 @@ import {
 import {ImageEnum} from '@/enum/image';
 import {ImageTexture} from 'src/render/texture';
 import {initCanvas} from '@/utils/webgl';
+import {TextField} from 'src/render/textfield';
 
 @Component
 export default class App extends Vue {
@@ -40,8 +45,9 @@ export default class App extends Vue {
       PreloadAllImages(IMAGE_SOURCE_LIST, this.tf)
         .then((res: any) => {
           this.uvList = res;
+          this.drawText();
           this.drawTikTok();
-          this.drawMesh();
+          // this.drawMesh();
           this.initEvent();
           this.rainbow.render();
         })
@@ -74,11 +80,37 @@ export default class App extends Vue {
     const g = new Generator(this.rainbow, new RectMesh(), 0, 0, 3000);
     let obj = g.instance().show();
     obj.size = [100, 100];
-    obj.translation = [800, 800];
+    obj.translation = [50, 50];
     obj.texture = GetTextureByType(ImageEnum.TikTok, this.uvList);
     // obj.borderWidth = 2;
     // obj.borderColor = [255, 255, 255, 255];
     //  obj.outViewportStatus = OutViewportStatus.NONE;
+  }
+
+  /**
+   * 写字
+   */
+  drawText() {
+    const g: TextFieldGenerator = new TextFieldGenerator(
+      this.rainbow,
+      10,
+      1,
+      TextFieldVerticalAlign.MIDDLE,
+      10,
+      3000
+    );
+    const t: TextField = g.instance();
+    t.show();
+    t.text = 'TickTok';
+    t.fontSize = 16;
+    t.color = [255, 255, 255, 255];
+    t.translation = [0, 100];
+    // t.borderWidth = 2;
+    // t.borderColor = [255, 255, 0, 255];
+
+    // g.opacity = 0.5;
+
+    window['textg'] = g;
   }
 
   /**

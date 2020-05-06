@@ -10,9 +10,9 @@ const Main = {template: '<div>main</div>'};
  */
 const Rainbow = {
   template: `
-    <div class="rainbow">
+    <template>
       <router-view></router-view>
-    </div>
+    </template>
   `,
 };
 
@@ -28,9 +28,9 @@ const Bar = () => import('./charts/bar/bar.vue');
 
 const WebGL = {
   template: `
-    <div class="webgl">
+    <template>
       <router-view></router-view>
-    </div>
+    </template>
   `,
 };
 // @ts-ignore
