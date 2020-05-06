@@ -39,9 +39,3 @@ export declare class Mesh {
 export declare class RectMesh extends Mesh {
     constructor(originX?: number, originY?: number);
 }
-export declare class OneWayArrowMesh extends Mesh {
-    constructor(width?: number, height?: number);
-}
-export declare class TwoWayArrowMesh extends Mesh {
-    constructor(width?: number, height?: number);
-}

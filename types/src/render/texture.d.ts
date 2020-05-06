@@ -10,6 +10,10 @@ export declare class TextureFactroy {
     createTexture(source: any, width: number, height: number): ImageTexture;
     getFontTexture(str: string): ImageTexture;
     getFontTextures(): Map<string, ImageTexture>;
+    /**
+     * 嵌入字体
+     * @param chars
+     */
     embedFont(chars: string): void;
     updateToGL(): void;
     updateTextureToGL(texture: ImageTexture): void;

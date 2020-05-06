@@ -8,33 +8,30 @@ export default class App extends Vue {
         exact: boolean;
         meta: {
             desc: string;
+            level?: undefined;
         };
         component: {
             template: string;
         };
         redirect: string;
+        children?: undefined;
     } | {
         path: string;
+        component: {
+            template: string;
+        };
         meta: {
             desc: string;
+            level: number;
         };
-        component: () => Promise<typeof import("./components/mesh/mesh.vue")>;
-        exact?: undefined;
-        redirect?: undefined;
-    } | {
-        path: string;
-        meta: {
-            desc: string;
-        };
-        component: () => Promise<typeof import("./components/point/point.vue")>;
-        exact?: undefined;
-        redirect?: undefined;
-    } | {
-        path: string;
-        meta: {
-            desc: string;
-        };
-        component: () => Promise<typeof import("./components/triangles/triangles.vue")>;
+        children: {
+            path: string;
+            meta: {
+                desc: string;
+                level: number;
+            };
+            component: () => Promise<typeof import("./webgl/quick-start/index.vue")>;
+        }[];
         exact?: undefined;
         redirect?: undefined;
     })[];
