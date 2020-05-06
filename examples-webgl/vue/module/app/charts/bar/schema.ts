@@ -1,26 +1,37 @@
+/**
+ * json schema
+ * https://github.com/epoberezkin/ajv/blob/master/KEYWORDS.md#contains
+ */
 export const BarChartSchema = {
   type: 'object',
-  required: ['username', 'email', 'password'],
+  required: ['xAxis', 'yAxis', 'series'],
   properties: {
-    username: {
-      type: 'string',
-      minLength: 4,
+    xAxis: {
+      type: 'object',
+      required: ['type', 'data'],
+      properties: {
+        type: {
+          type: 'string',
+          enum: ['image', 'name'],
+        },
+        data: {
+          type: 'array',
+        },
+      },
     },
-    email: {
-      type: 'string',
-      format: 'email',
+
+    yAxis: {
+      type: 'object',
+      required: ['type'],
+      properties: {
+        type: {
+          type: 'string',
+          enum: ['value'],
+        },
+      },
     },
-    password: {
-      type: 'string',
-      minLength: 6,
-    },
-    age: {
-      type: 'integer',
-      minimum: 0,
-    },
-    sex: {
-      enum: ['boy', 'girl', 'secret'],
-      default: 'secret',
+    series: {
+      type: 'array',
     },
   },
 };

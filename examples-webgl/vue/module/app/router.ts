@@ -10,9 +10,7 @@ const Main = {template: '<div>main</div>'};
  */
 const Rainbow = {
   template: `
-    <template>
       <router-view></router-view>
-    </template>
   `,
 };
 
@@ -28,9 +26,7 @@ const Bar = () => import('./charts/bar/bar.vue');
 
 const WebGL = {
   template: `
-    <template>
       <router-view></router-view>
-    </template>
   `,
 };
 // @ts-ignore
@@ -112,6 +108,11 @@ export const routes = [
         path: 'mesh',
         meta: {desc: '矩形', level: 1},
         component: Mesh,
+      },
+      {
+        path: 'bar',
+        meta: {desc: '柱状图', level: 1},
+        component: Bar,
       },
     ],
   },

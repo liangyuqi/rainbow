@@ -7,11 +7,11 @@ import {ImageEnum} from '@/enum/image';
  */
 export function PreloadAllImages(sources: IImageSource[], tf: TextureFactroy) {
   return Promise.all(
-    sources.map(source => {
+    sources.map((source) => {
       return LoadImage(source.src);
     })
-  ).then(res => {
-    let textures = res.map(image =>
+  ).then((res) => {
+    let textures = res.map((image) =>
       tf.createTexture(image, image.width, image.height)
     );
     if (textures) {
@@ -31,12 +31,12 @@ export function LoadImage(src: string): Promise<any> {
 }
 
 export function GetTextureByType(type: ImageEnum, uvList: Array<ImageTexture>) {
-  let source = IMAGE_SOURCE_LIST.find(source => source.type === type);
+  let source = IMAGE_SOURCE_LIST.find((source) => source.type === type);
   try {
     let index = source!.zIndex;
     return uvList[index];
   } catch (error) {
-    throw Error('Error: 导入Zone找不到对应Texture');
+    throw Error('Error: 找不到对应Texture');
   }
 }
 
@@ -46,8 +46,8 @@ export const IMAGE_SOURCE_LIST: Array<IImageSource> = [
   {
     zIndex: 0,
     type: ImageEnum.TikTok,
-    src: tiktokImgUrl
-  }
+    src: tiktokImgUrl,
+  },
 ];
 
 export interface IImageSource {
