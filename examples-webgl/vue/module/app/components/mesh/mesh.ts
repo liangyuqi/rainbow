@@ -105,7 +105,7 @@ export default class App extends Vue {
     t.fontSize = 16;
     t.color = [255, 255, 255, 255];
     t.translation = [0, 100];
-    // t.borderWidth = 2;
+    t.borderWidth = 0;
     // t.borderColor = [255, 255, 0, 255];
 
     // g.opacity = 0.5;

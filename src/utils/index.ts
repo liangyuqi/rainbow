@@ -41,7 +41,7 @@ export function loadImage(src: string): Promise<any> {
 }
 
 export function loadImages(srcs: string[]): Promise<any[]> {
-  return Promise.all(srcs.map(src => loadImage(src)));
+  return Promise.all(srcs.map((src) => loadImage(src)));
 }
 
 export class IdCreator {
@@ -153,8 +153,21 @@ export function isChinese(str: string) {
   return code >= 0x4e00 && code <= 0x29fa5;
 }
 
-export function numberClamp(min: number, max: number, x: number) {
-  return Math.min(max, Math.max(min, x));
+/**
+ * 缩放控制
+ * @param min
+ * @param max
+ * @param x
+ */
+export function numberClamp(
+  min: number,
+  max: number,
+  x: number,
+  limitScale: boolean
+) {
+  if (limitScale) {
+    return Math.min(max, Math.max(min, x));
+  } else return Math.max(0.01, x);
 }
 
 export function rectangleIntersection(
