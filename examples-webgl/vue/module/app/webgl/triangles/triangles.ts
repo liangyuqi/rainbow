@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import {initShaders} from '@/webgl/initShaders';
+import {initCanvas} from '@/utils/webgl';
 // import '~/lib/webgl-utils.js';
 const VERTEXRS = [0.0, 0.5, -0.5, -0.5, 0.5, -0.5];
 
@@ -19,9 +20,9 @@ const FSHADER_SOURCE = `
         }`;
 
 // 声明xyz三个方向上平移的距离
-const Tx = 0.3,
-  Ty = 0.3,
-  Tz = 0;
+const Tx = 0;
+const Ty = 0;
+const Tz = 0;
 
 @Component
 export default class App extends Vue {
@@ -29,20 +30,12 @@ export default class App extends Vue {
 
   // 声明周期钩子
   mounted() {
-    let canvas = document.getElementById('canvas') as HTMLCanvasElement;
-    canvas.style.transitionProperty = 'transform';
-    canvas.style.userSelect = 'none';
-    canvas.width = document.getElementById('main-canvas')!.clientWidth;
-    canvas.height = document.getElementById('main-canvas')!.clientHeight;
-    canvas.style.position = 'absolute';
-    canvas.style.top = '0';
-    canvas.style.left = '0';
-    canvas.style.zIndex = '1';
+    let canvas = initCanvas();
 
     if (canvas) {
       // getWebGLContext();
       let gl =
-        canvas.getContext('webgl') ||
+        canvas.getContext('webgl2') ||
         (canvas.getContext('experimental-webgl') as WebGLRenderingContext);
       // 不支持WebGL的浏览器将打印一个错误，并结束代码运行
       if (!gl) {
@@ -72,12 +65,13 @@ export default class App extends Vue {
       }
 
       // 给uniform变量赋值
-      // gl.uniform4f(u_Translation, Tx, Ty, Tz, 0.0);
+      gl.uniform4f(u_Translation, Tx, Ty, Tz, 0.0);
 
       // 指定一个覆盖（清空）canvas的rgba颜色 ，本质是setColor,他把 背景色存到了 webgl system中的glCOLOR_BUFFER_BIT，得手动render一下
       gl.clearColor(0.0, 0.0, 0.5, 1.0);
 
       // 清除canvas，会清除全部，再使用背景色 填充
+
       gl.clear(gl.COLOR_BUFFER_BIT);
 
       // 将三个点绘制出来

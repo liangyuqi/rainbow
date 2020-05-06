@@ -4,13 +4,13 @@ import {EventDispatcher} from '../events';
 
 const TextureConfig = {
   MAX_WIDTH: Math.pow(2, 11),
-  MAX_HEIGHT: Math.pow(2, 11)
+  MAX_HEIGHT: Math.pow(2, 11),
 };
 
 const FontConfig = {
   fontSize: Math.pow(2, 7), // 生成文字材质尺寸，2的幂，越大质量越好
   fontFamily: 'Sans-serif',
-  fontWeight: 'normal'
+  fontWeight: 'normal',
 };
 
 // 生成的材质雪碧图 材质间的gap 防止材质采样错误
@@ -65,8 +65,8 @@ export class TextureFactroy {
       h: height + TextureGap,
       data: {
         source: source,
-        texture: t
-      }
+        texture: t,
+      },
     });
 
     this.updateToGL();
@@ -90,6 +90,10 @@ export class TextureFactroy {
     return this.fontMaps;
   }
 
+  /**
+   * 嵌入字体
+   * @param chars
+   */
   public embedFont(chars: string) {
     const sdf = new TinySDF(
       FontConfig.fontSize,
@@ -116,9 +120,10 @@ export class TextureFactroy {
         h: size + TextureGap,
         data: {
           source: s,
-          texture: t
-        }
+          texture: t,
+        },
       });
+      // console.log(this.fontMaps);
       this.fontMaps.set(char, t);
     }
   }
@@ -139,9 +144,9 @@ export class TextureFactroy {
 
     const textures: ImageTexture[] = this.blocks
       .map((b, k) => b.data.texture)
-      .filter(t => t.isReady === false);
+      .filter((t) => t.isReady === false);
 
-    textures.forEach(t => this.updateTextureToGL(t));
+    textures.forEach((t) => this.updateTextureToGL(t));
   }
 
   public updateTextureToGL(texture: ImageTexture) {
@@ -202,7 +207,7 @@ export class TextureFactroy {
 }
 
 export const enum ImageTextureEvent {
-  UPDATE = 'update'
+  UPDATE = 'update',
 }
 
 export class ImageTexture extends EventDispatcher {

@@ -48,6 +48,7 @@ body,
   height: 100%;
   padding: 20px;
   border: 20px solid #ffffff;
+  box-sizing: border-box;
 }
 
 #right-bar {
@@ -67,6 +68,11 @@ body,
 
   #mini-canvas {
   }
+}
+
+.route-title {
+  color: #000000;
+  font-weight: bold;
 }
 
 .link-active {

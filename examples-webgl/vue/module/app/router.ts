@@ -3,17 +3,48 @@ import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
-// @ts-ignore
-const Triangles = () => import('./components/triangles/triangles.vue');
-// @ts-ignore
-const Point = () => import('./components/point/point.vue');
+const Main = {template: '<div>main</div>'};
+
+/**
+ * 基于rainbow
+ */
+const Rainbow = {
+  template: `
+      <router-view></router-view>
+  `,
+};
 
 // @ts-ignore
 const Mesh = () => import('./components/mesh/mesh.vue');
 
-// const Triangles = resolve => require('./components/triangles/triangles.vue')
+// @ts-ignore
+const Bar = () => import('./charts/bar/bar.vue');
 
-const Main = {template: '<div>main</div>'};
+/**
+ * 基于原生webgl
+ */
+
+const WebGL = {
+  template: `
+      <router-view></router-view>
+  `,
+};
+// @ts-ignore
+const Point = () => import('./webgl/point/point.vue');
+
+// @ts-ignore
+const MultiPoint = () => import('./webgl/multipoint/multipoint.vue');
+// @ts-ignore
+const Triangles = () => import('./webgl/triangles/triangles.vue');
+
+// @ts-ignore
+const Arrow = () => import('./webgl/arrow/arrow.vue');
+
+// @ts-ignore
+const Cube = () => import('./webgl/cube/cube.vue');
+
+// @ts-ignore
+const QuickStart = () => import('./webgl/quick-start/index.vue');
 
 export const routes = [
   {
@@ -21,26 +52,73 @@ export const routes = [
     exact: true,
     meta: {desc: 'main'},
     component: Main,
-    redirect: '/mesh'
+    redirect: '/rainbow/mesh',
+  },
+
+  //  {
+  //    path: '/bar',
+  //    meta: {desc: '柱状图'},
+  //    component: Bar,
+  //  },
+
+  {
+    path: '/webgl',
+    component: WebGL,
+    meta: {desc: '一、基于原生WebGL', level: 0},
+    children: [
+      {
+        path: 'quick-start',
+        meta: {desc: '快速开始', level: 1},
+        component: QuickStart,
+      },
+      {
+        path: 'point',
+        meta: {desc: '单点', level: 1},
+        component: Point,
+      },
+      {
+        path: 'multipoint',
+        meta: {desc: '多点', level: 1},
+        component: MultiPoint,
+      },
+      {
+        path: 'triangles',
+        meta: {desc: '三角形', level: 1},
+        component: Triangles,
+      },
+
+      {
+        path: 'arrow',
+        meta: {desc: '箭头', level: 1},
+        component: Arrow,
+      },
+      {
+        path: 'cube',
+        meta: {desc: '立方体', level: 1},
+        component: Cube,
+      },
+    ],
   },
   {
-    path: '/mesh',
-    meta: {desc: '矩形'},
-    component: Mesh
+    path: '/rainbow',
+    component: Rainbow,
+    meta: {desc: '二、基于Rainbow', level: 0},
+    children: [
+      {
+        path: 'mesh',
+        meta: {desc: '矩形', level: 1},
+        component: Mesh,
+      },
+      {
+        path: 'bar',
+        meta: {desc: '柱状图', level: 1},
+        component: Bar,
+      },
+    ],
   },
-  {
-    path: '/point',
-    meta: {desc: '点'},
-    component: Point
-  },
-  {
-    path: '/triangles',
-    meta: {desc: '三角形'},
-    component: Triangles
-  }
 ];
 
 export default new VueRouter({
   routes,
-  linkActiveClass: 'link-active'
+  linkActiveClass: 'link-active',
 });

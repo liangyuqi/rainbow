@@ -91,20 +91,21 @@ export class GrowingPacker {
       // @ts-ignore
       y: node.y + h,
       w: node.w,
-      h: node.h - h
+      h: node.h - h,
     };
     node.right = {
       // @ts-ignore
       x: node.x + w,
       y: node.y,
       w: node.w - w,
-      h: h
+      h: h,
     };
     return node;
   }
 
   private growNode(w: number, h: number): PNode {
     if (this.root.w + w > this.mw || this.root.h + h > this.mh) {
+      // todo
       console.error('Texture too large.');
       // @ts-ignore
       return;
@@ -132,7 +133,7 @@ export class GrowingPacker {
       w: this.root.w + w,
       h: this.root.h,
       down: this.root,
-      right: {x: this.root.w, y: 0, w: w, h: this.root.h}
+      right: {x: this.root.w, y: 0, w: w, h: this.root.h},
     };
     let node = this.findNode(this.root, w, h);
     if (node) return this.splitNode(node, w, h);
@@ -148,7 +149,7 @@ export class GrowingPacker {
       w: this.root.w,
       h: this.root.h + h,
       down: {x: 0, y: this.root.h, w: this.root.w, h: h},
-      right: this.root
+      right: this.root,
     };
     let node = this.findNode(this.root, w, h);
     if (node) return this.splitNode(node, w, h);

@@ -1,15 +1,21 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import {Rainbow} from '../../../../../../src/rainbow';
-import {Generator} from '../../../../../../src/render/generator';
+import {
+  Generator,
+  TextFieldGenerator,
+  TextFieldVerticalAlign,
+} from '../../../../../../src/render/generator';
 import {RectMesh} from '../../../../../../src/graph/mesh';
 import {
   GetTextureByType,
   PreloadAllImages,
-  IMAGE_SOURCE_LIST
+  IMAGE_SOURCE_LIST,
 } from '@/utils/resource';
 import {ImageEnum} from '@/enum/image';
 import {ImageTexture} from 'src/render/texture';
+import {initCanvas} from '@/utils/webgl';
+import {TextField} from 'src/render/textfield';
 
 @Component
 export default class App extends Vue {
@@ -24,7 +30,7 @@ export default class App extends Vue {
   uvList!: ImageTexture[];
 
   mounted() {
-    this.initCanvas();
+    this.canvas = initCanvas();
 
     if (this.canvas) {
       this.rainbow = new Rainbow(this.canvas);
@@ -39,27 +45,16 @@ export default class App extends Vue {
       PreloadAllImages(IMAGE_SOURCE_LIST, this.tf)
         .then((res: any) => {
           this.uvList = res;
+          this.drawText();
           this.drawTikTok();
-          this.drawMesh();
+          // this.drawMesh();
           this.initEvent();
           this.rainbow.render();
         })
-        .catch(e => {
+        .catch((e) => {
           console.error(e);
         });
     }
-  }
-
-  initCanvas() {
-    this.canvas = document.getElementById('canvas') as HTMLCanvasElement;
-    this.canvas.style.transitionProperty = 'transform';
-    this.canvas.style.userSelect = 'none';
-    this.canvas.width = document.getElementById('main-canvas')!.clientWidth;
-    this.canvas.height = document.getElementById('main-canvas')!.clientHeight;
-    this.canvas.style.position = 'absolute';
-    this.canvas.style.top = '0';
-    this.canvas.style.left = '0';
-    this.canvas.style.zIndex = '1';
   }
 
   /**
@@ -85,7 +80,7 @@ export default class App extends Vue {
     const g = new Generator(this.rainbow, new RectMesh(), 0, 0, 3000);
     let obj = g.instance().show();
     obj.size = [100, 100];
-    obj.translation = [800, 800];
+    obj.translation = [50, 50];
     obj.texture = GetTextureByType(ImageEnum.TikTok, this.uvList);
     // obj.borderWidth = 2;
     // obj.borderColor = [255, 255, 255, 255];
@@ -93,11 +88,37 @@ export default class App extends Vue {
   }
 
   /**
+   * 写字
+   */
+  drawText() {
+    const g: TextFieldGenerator = new TextFieldGenerator(
+      this.rainbow,
+      10,
+      1,
+      TextFieldVerticalAlign.MIDDLE,
+      10,
+      3000
+    );
+    const t: TextField = g.instance();
+    t.show();
+    t.text = 'TickTok';
+    t.fontSize = 16;
+    t.color = [255, 255, 255, 255];
+    t.translation = [0, 100];
+    t.borderWidth = 0;
+    // t.borderColor = [255, 255, 0, 255];
+
+    // g.opacity = 0.5;
+
+    window['textg'] = g;
+  }
+
+  /**
    * 绑定事件交互
    */
   initEvent() {
     // 鼠标缩放回调
-    const _wheelHandler = evt => {
+    const _wheelHandler = (evt) => {
       if (evt.preventDefault) {
         evt.preventDefault();
       }
@@ -110,13 +131,13 @@ export default class App extends Vue {
     };
 
     // 开始视口拖动
-    const _dragStart = evt => {
+    const _dragStart = (evt) => {
       this.isDragging = true;
       this.dragLastPoint = [evt.x, evt.y];
     };
 
     // 视口拖动
-    const _drag = evt => {
+    const _drag = (evt) => {
       if (!this.isDragging) return;
       const dx = evt.x - this.dragLastPoint[0];
       const dy = evt.y - this.dragLastPoint[1];
@@ -125,7 +146,7 @@ export default class App extends Vue {
     };
 
     // 视口拖动结束
-    const _dragEnd = evt => {
+    const _dragEnd = (evt) => {
       this.isDragging = false;
       this.dragLastPoint = [];
     };

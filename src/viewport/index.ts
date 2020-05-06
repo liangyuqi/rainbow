@@ -12,7 +12,7 @@ export enum ViewportEvent {
   TRANSLATION_CHANGE = 'translationChange',
   SCALE_CHANGE = 'scaleChange',
   SIZE_CHANGE = 'sizeChange',
-  ROTATION_CHANGE = 'rotationChange'
+  ROTATION_CHANGE = 'rotationChange',
 }
 
 export class Viewport extends EventDispatcher {
@@ -29,6 +29,7 @@ export class Viewport extends EventDispatcher {
   private tempVec3: Float32Array = vec3.create();
   private scaleMin: number = 0.05;
   private scaleMax: number = 2;
+  private _limitScale: boolean = true;
   public cvMatIsModified: boolean = true;
   public vpScaleIsModified: boolean = true;
   public vpTranslationIsModified: boolean = true;
@@ -50,7 +51,7 @@ export class Viewport extends EventDispatcher {
     this._bgColor = color;
     this._gl.clearColor.apply(
       this._gl,
-      color.map(c => c / 255)
+      color.map((c) => c / 255)
     );
   }
 
@@ -99,7 +100,7 @@ export class Viewport extends EventDispatcher {
    * @param py 缩放中心y
    */
   scaleOrigin(scale: number, px: number, py: number, dispatch: boolean = true) {
-    scale = numberClamp(this.scaleMin, this.scaleMax, scale);
+    scale = numberClamp(this.scaleMin, this.scaleMax, scale, this._limitScale);
     const vpScale = this._vpScaleVec2;
     const sizeRatio = this._engine.sizeRatio;
     const s = (this.scale - scale) * sizeRatio;
@@ -190,7 +191,7 @@ export class Viewport extends EventDispatcher {
     const scale = this.scale * sizeRatio;
     return [
       ((vec2[0] + 1) * this._vpWidth * 0.5) / scale,
-      ((vec2[1] + 1) * this._vpHeight * 0.5) / scale
+      ((vec2[1] + 1) * this._vpHeight * 0.5) / scale,
     ];
   }
 
@@ -201,6 +202,14 @@ export class Viewport extends EventDispatcher {
 
   get scaleRange(): number[] {
     return [this.scaleMin, this.scaleMax];
+  }
+
+  set limitScale(flag: boolean) {
+    this._limitScale = flag;
+  }
+
+  get limitScale(): boolean {
+    return this._limitScale;
   }
 
   /**
@@ -222,7 +231,7 @@ export class Viewport extends EventDispatcher {
     tvec.set([
       this._vpScaleVec2[0] * e.sizeRatio,
       this._vpScaleVec2[1] * e.sizeRatio,
-      1
+      1,
     ]);
     mat4.scale(tmat, tmat, tvec);
 
