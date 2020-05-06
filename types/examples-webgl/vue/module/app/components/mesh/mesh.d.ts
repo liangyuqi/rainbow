@@ -11,7 +11,6 @@ export default class App extends Vue {
     dragLastPoint: any[];
     uvList: ImageTexture[];
     mounted(): void;
-    initCanvas(): void;
     /**
      * 画矩形 demo
      */
@@ -20,6 +19,10 @@ export default class App extends Vue {
      * 画抖音 demo
      */
     drawTikTok(): void;
+    /**
+     * 写字
+     */
+    drawText(): void;
     /**
      * 绑定事件交互
      */

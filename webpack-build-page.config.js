@@ -32,12 +32,12 @@ const plugins = [
     filename: 'index.html',
     template: join(__dirname, 'examples-webgl/index.html'),
     hash: true,
-    chunks: ['index']
+    chunks: ['index'],
   }),
   new CopyWebpackPlugin([
     {
       from: path.join(__dirname, 'examples-webgl/live2d'),
-      to: path.join(__dirname, 'dist/examples-webgl/live2d')
+      to: path.join(__dirname, 'dist/examples-webgl/live2d'),
     },
     // {
     //   from: path.join(__dirname, 'assets'),
@@ -45,8 +45,8 @@ const plugins = [
     // },
     {
       from: path.join(__dirname, 'examples-webgl/mock'),
-      to: path.join(__dirname, 'dist/examples-webgl/mock')
-    }
+      to: path.join(__dirname, 'dist/examples-webgl/mock'),
+    },
   ]),
   new AutoDllPlugin({
     inject: true,
@@ -56,10 +56,10 @@ const plugins = [
       core: [
         // 不能分成多个entry，因为每个entry都可能会依赖同样的库，但同样的库无法通过commonChunks进行合并。
         'vue',
-        'vue-router'
-      ]
-    }
-  })
+        'vue-router',
+      ],
+    },
+  }),
   // new BundleAnalyzerPlugin()
 ];
 
@@ -68,7 +68,7 @@ module.exports = {
   // mode: 'production',
   mode: 'development',
   entry: {
-    index: './examples-webgl/index.ts'
+    index: './examples-webgl/index.ts',
   },
   // devtool: 'source-map',
   output: {
@@ -79,33 +79,36 @@ module.exports = {
     libraryTarget: 'umd',
     library: camelCase(libraryName),
     filename: `${libraryName}.[contenthash:8].js`,
-    chunkFilename: `${libraryName}.[contenthash:8].async.js`
+    chunkFilename: `${libraryName}.[contenthash:8].async.js`,
     // globalObject: 'this'
   },
   resolve: {
     extensions: ['.js', '.vue', '.json', '.ts'],
     alias: {
-      '@': resolve('examples-webgl')
+      vue$: 'vue/dist/vue',
+      '@': path.resolve(__dirname, './examples-webgl'),
+      src: path.resolve(__dirname, './src'),
+      '~': path.resolve(__dirname, './'),
     },
     plugins: [
       // new TsConfigPathsPlugin({
       //   configFile: 'tsconfig.json'
       // })
-    ]
+    ],
   },
   module: {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
       },
       {
         test: /\.tsx?$/,
         loader: 'ts-loader',
         exclude: /node_modules/,
         options: {
-          appendTsSuffixTo: [/\.vue$/] // vue 单文件写法
-        }
+          appendTsSuffixTo: [/\.vue$/], // vue 单文件写法
+        },
       },
       {
         test: /\-worker\.ts$/,
@@ -114,18 +117,18 @@ module.exports = {
             loader: 'worker-loader',
             options: {
               inline: true,
-              publicPath: '/src/websocket/'
-            }
-          }
-        ]
+              publicPath: '/src/websocket/',
+            },
+          },
+        ],
       },
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -133,11 +136,11 @@ module.exports = {
         options: {
           esModule: false, // 这里设置为false，否则webpack打包img后src为“[object Module]”
 
-          name: './images/[name].[ext]'
+          name: './images/[name].[ext]',
           // limit: 8192
-        }
-      }
-    ]
+        },
+      },
+    ],
   },
   optimization: {
     splitChunks: {
@@ -147,22 +150,22 @@ module.exports = {
           chunks: 'all',
           priority: 1,
           minChunks: 2,
-          reuseExistingChunk: true
-        }
-      }
+          reuseExistingChunk: true,
+        },
+      },
     },
     minimizer: [
       new TerserPlugin({
         terserOptions: {
           output: {
-            comments: false
-          }
+            comments: false,
+          },
         },
         parallel: size,
-        cache: true
+        cache: true,
         // chunkFilter: chunk => chunk.name !== 'common'
-      })
-    ]
+      }),
+    ],
   },
-  plugins: plugins
+  plugins: plugins,
 };

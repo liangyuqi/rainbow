@@ -20,6 +20,7 @@ export declare class Viewport extends EventDispatcher {
     private tempVec3;
     private scaleMin;
     private scaleMax;
+    private _limitScale;
     cvMatIsModified: boolean;
     vpScaleIsModified: boolean;
     vpTranslationIsModified: boolean;
@@ -61,6 +62,8 @@ export declare class Viewport extends EventDispatcher {
     get translation(): number[];
     set scaleRange(range: number[]);
     get scaleRange(): number[];
+    set limitScale(flag: boolean);
+    get limitScale(): boolean;
     /**
      * 从屏幕坐标转换程世界坐标
      * @param x

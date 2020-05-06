@@ -32,5 +32,11 @@ export declare function arrayEqual(arr1: any, arr2: any): boolean;
 export declare function hexToRgb(str: string): string | never[];
 export declare function isInteger(str: string): boolean;
 export declare function isChinese(str: string): boolean;
-export declare function numberClamp(min: number, max: number, x: number): number;
+/**
+ * 缩放控制
+ * @param min
+ * @param max
+ * @param x
+ */
+export declare function numberClamp(min: number, max: number, x: number, limitScale: boolean): number;
 export declare function rectangleIntersection(out: Rectangle, rect1: Rectangle, rect2: Rectangle): Rectangle;
