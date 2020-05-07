@@ -2,8 +2,8 @@ export const option = {
   xAxis: {
     type: 'image',
     data: [
-      '../../../../../../assets/images/tiktok.png',
-      '../../../../../../assets/images/tiktok.png',
+      require('../../../../../../assets/images/tiktok.png'),
+      require('../../../../../../assets/images/tiktok.png'),
     ],
   },
   yAxis: {

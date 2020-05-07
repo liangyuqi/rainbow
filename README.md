@@ -1,6 +1,22 @@
 ## rainbow
 
-基于 WebGL 的渲染库
+一个基于 WebGL 的简易渲染库
+
+#### 本地开发
+
+运行
+
+```
+npm install
+npm run dev
+```
+
+打包发布
+
+```
+npm run build && npm publish // 打包rainbow库
+npm run build:page // 打包demo spa
+```
 
 ```
 |-- github
