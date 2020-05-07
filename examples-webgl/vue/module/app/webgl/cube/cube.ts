@@ -60,7 +60,7 @@ export default class App extends Vue {
       // 指定清空<canvas>颜色
       gl.clearColor(0.0, 0.0, 0.0, 1.0);
       // 是否开启 隐藏面消除
-      // gl.enable(gl.DEPTH_TEST);
+      gl.enable(gl.DEPTH_TEST);
 
       // 获取 u_ViewMatrix 、u_ModelMatrix和 u_ProjMatrix 变量的存储位置
       // @ts-ignore
@@ -73,6 +73,7 @@ export default class App extends Vue {
       let mvpMatrix = new Matrix4.Matrix4();
       mvpMatrix.setPerspective(30, 1, 1, 100);
       mvpMatrix.lookAt(3, 3, 7, 0, 0, 0, 0, 1, 0);
+      // mvpMatrix.lookAt(10, 10, 10, 0, 0, -1, 0, 1, 0);
 
       gl.uniformMatrix4fv(u_MvpMatrix, false, mvpMatrix.elements);
 
