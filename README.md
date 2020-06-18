@@ -2,6 +2,8 @@
 
 一个基于 WebGL 的简易渲染库
 
+https://liangyuqi.github.io/rainbow/dist/index.html#/rainbow/bar
+
 #### 本地开发
 
 运行
